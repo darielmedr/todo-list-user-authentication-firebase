@@ -1,0 +1,42 @@
+<mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false"
+    [ngClass]="{sidenavExpanded: isExpanded}">
+    <mat-toolbar>
+      <button mat-icon-button type="button" aria-label="Toggle sidenav size" mat-icon-button (click)="toggleSize()">
+        <mat-icon aria-label="Side nav toggle size icon">menu</mat-icon>
+      </button>
+      <span *ngIf="isExpanded">Menu</span>
+    </mat-toolbar>
+    <mat-nav-list class="side-list">
+      <mat-list-item *ngFor="let item of menuItems" [routerLink]="'/' + item.path" routerLinkActive="active"
+        matTooltip="{{item.tooltip}}" matTooltipPosition="right" [matTooltipDisabled]="isExpanded">
+        <span mat-list-icon>
+          <mat-icon>{{item.icon}}</mat-icon>
+        </span>
+        <a mat-line *ngIf="isExpanded">{{item.tooltip| titlecase}}</a>
+      </mat-list-item>
+      <div class="spacer"></div>
+      <mat-list-item *ngIf="userCredentials" matTooltip="Logout" matTooltipPosition="right" [matTooltipDisabled]="isExpanded"
+                     (click)="logout()">
+        <span mat-list-icon>
+          <mat-icon>logout</mat-icon>
+        </span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z8">
+      <button mat-icon-button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>TODO List</span>
+      <span class="spacer"></span>
+      <span id="user-credential">{{userCredentials?.email}}</span>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

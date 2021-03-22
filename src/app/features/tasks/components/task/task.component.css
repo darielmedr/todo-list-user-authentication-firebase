@@ -1,0 +1,16 @@
+.container {
+    margin: 0.2rem 0;
+    border-top: solid 1px rgba(121, 121, 121, 0.5);
+}
+
+.mat-card-header {
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.mat-card-title {
+    margin: 0;
+}
+
+.spacer {
+    flex-grow: 1;
+}

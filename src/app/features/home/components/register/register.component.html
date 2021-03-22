@@ -1,0 +1,32 @@
+<mat-card class="container">
+    <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="userForm" (ngSubmit)="register()">
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" placeholder="johndoe@domain.com" required>
+                <mat-icon matPrefix>email</mat-icon>
+                <mat-error>{{getEmailErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" #password formControlName="password"
+                    placeholder="Password"  required>
+                <mat-icon matPrefix>lock</mat-icon>
+                <button type="button" mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="(password.value?.length || 0) < 8">The password is too short</mat-error>
+            </mat-form-field>
+        </p>
+
+        <mat-card-actions>
+            <button mat-flat-button color="warn" type="submit" [disabled]="!userForm.valid">Register</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

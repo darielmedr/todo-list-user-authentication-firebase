@@ -1,0 +1,21 @@
+.home-container {
+    background-color: rgb(177, 216, 214);
+    height: calc(100vh - 64px);
+    text-align: center;
+}
+
+.auth-buttons {
+    position: relative;
+    top: 40%;
+}
+.auth-buttons button {
+    width: 150px;
+    margin: 2rem 1rem;
+}
+
+#register {
+    background-color: rgba(173, 47, 64, 0.4) ;
+}
+#register:hover {
+    background-color: rgb(173, 47, 64) ;
+}

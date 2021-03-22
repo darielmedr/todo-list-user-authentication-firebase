@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todo-list-angular-3992c": {
+      "hosting": {
+        "TODO-list-angular-firebase": [
+          "todo-list-angular-3992c"
+        ]
+      }
+    }
+  }
+}

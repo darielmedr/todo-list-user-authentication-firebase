@@ -1,0 +1,44 @@
+<button class="add-btn" matTooltip="Add new task" mat-fab color="primary" (click)="newTask()">
+    <mat-icon>note_add</mat-icon>
+</button>
+
+<div fxLayout="row" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start" fxLayout.lt-md="column"
+    class="container-wrapper">
+    <mat-card fxFlex="1 1 30%" class="container">
+        <mat-card-header>
+            <mat-card-title>TO-DO</mat-card-title>
+        </mat-card-header>
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo$ | async"
+            [cdkDropListConnectedTo]="[inProgressList, doneList]" (cdkDropListDropped)="drop($event)">
+            <app-task cdkDrag *ngFor="let task of todo$ | async" [task]="task" (edit)="editTask($event, 'todo')"
+                (delete)="deleteTask($event, 'todo')">
+            </app-task>
+        </div>
+    </mat-card>
+
+    <mat-card fxFlex="1 1 30%" class="container">
+        <mat-card-header>
+            <mat-card-title>In Progress</mat-card-title>
+        </mat-card-header>
+
+        <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress$ | async"
+            [cdkDropListConnectedTo]="[todoList, doneList]" (cdkDropListDropped)="drop($event)">
+            <app-task cdkDrag *ngFor="let task of inProgress$ | async" [task]="task"
+                (edit)="editTask($event, 'inProgress')" (delete)="deleteTask($event, 'inProgress')">
+            </app-task>
+        </div>
+    </mat-card>
+
+    <mat-card fxFlex="1 1 30%" class="container">
+        <mat-card-header>
+            <mat-card-title>Done</mat-card-title>
+        </mat-card-header>
+
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done$ | async"
+            [cdkDropListConnectedTo]="[todoList, inProgressList]" (cdkDropListDropped)="drop($event)">
+            <app-task cdkDrag *ngFor="let task of done$ | async" [task]="task" (edit)="editTask($event, 'done')"
+                (delete)="deleteTask($event, 'done')">
+            </app-task>
+        </div>
+    </mat-card>
+</div>

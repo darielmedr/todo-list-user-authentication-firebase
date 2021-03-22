@@ -1,0 +1,21 @@
+.container {
+  max-width: 400px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-card-actions {
+  display: flex;
+  flex-direction: column;
+}
+.mat-card-actions button {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+#register-button:hover {
+  background-color: #40ab12b3;
+  color: white;
+}

@@ -1,0 +1,15 @@
+<mat-card class="container">
+    <mat-card-header>
+        <mat-card-title>{{task.title}}</mat-card-title>
+        <div class="spacer"></div>
+        <button mat-icon-button color="primary" (click)="editTask()">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteTask()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{task.description}}</p>
+    </mat-card-content>
+</mat-card>

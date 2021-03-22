@@ -1,0 +1,23 @@
+.add-btn {
+  position: fixed;
+  bottom: 3rem;
+  right: 4rem;
+  z-index: 999;
+}
+
+.container {
+  margin: 1rem;
+}
+.container div {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  border-radius: 4px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms;
+}
